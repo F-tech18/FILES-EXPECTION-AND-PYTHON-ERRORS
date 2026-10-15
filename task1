@@ -1,21 +1,13 @@
-# Student names are keys and their marks are values.
-student_marks = {
-    "Ayesha": 92,
-    "Rahul": 85,
-    "Farhan": 88,
-    "Priya": 95,
-    "Omar": 79
-}
+"""Task 1: Read a file and handle errors gracefully."""
 
-student_name = input("Enter the student's name: ").strip()
+filename = "sample.txt"
 
-# Dictionary lookup is case-insensitive for this example.
-matching_name = next(
-    (name for name in student_marks if name.lower() == student_name.lower()),
-    None
-)
-
-if matching_name is not None:
-    print(f"{matching_name}'s marks: {student_marks[matching_name]}")
-else:
-    print(f"Sorry, student '{student_name}' was not found.")
+try:
+    with open(filename, "r", encoding="utf-8") as file:
+        print(f"Contents of {filename}:")
+        for line in file:
+            print(line, end="")
+except FileNotFoundError:
+    print(f"Error: '{filename}' was not found. Please make sure it exists in this folder.")
+except OSError as error:
+    print(f"Could not read the file: {error}")
