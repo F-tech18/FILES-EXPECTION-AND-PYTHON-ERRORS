@@ -1,0 +1,13 @@
+— Task 2: Demonstrate List Slicing."""
+
+# Create a list containing numbers from 1 through 10.
+numbers = list(range(1, 11))
+print("Original list:", numbers)
+
+# Slice out the first five elements (index 0 through index 4).
+first_five = numbers[:5]
+print("First five elements:", first_five)
+
+# Reverse the extracted list using slicing.
+reversed_list = first_five[::-1]
+print("Reversed list:", reversed_list)
