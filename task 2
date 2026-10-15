@@ -1,13 +1,23 @@
-— Task 2: Demonstrate List Slicing."""
+"""Task 2: Write, append, and read data from a file."""
 
-# Create a list containing numbers from 1 through 10.
-numbers = list(range(1, 11))
-print("Original list:", numbers)
+filename = "output.txt"
 
-# Slice out the first five elements (index 0 through index 4).
-first_five = numbers[:5]
-print("First five elements:", first_five)
+try:
+    user_data = input("Enter a number or some text: ")
 
-# Reverse the extracted list using slicing.
-reversed_list = first_five[::-1]
-print("Reversed list:", reversed_list)
+    # Write mode creates the file or replaces its previous content.
+    with open(filename, "w", encoding="utf-8") as file:
+        file.write(user_data + "\n")
+
+    # Append mode adds new content to the end of the file.
+    additional_data = input("Enter additional data to append: ")
+    with open(filename, "a", encoding="utf-8") as file:
+        file.write(additional_data + "\n")
+
+    # Read and display the final content.
+    print(f"\nFinal contents of {filename}:")
+    with open(filename, "r", encoding="utf-8") as file:
+        print(file.read(), end="")
+
+except OSError as error:
+    print(f"File operation failed: {error}")
