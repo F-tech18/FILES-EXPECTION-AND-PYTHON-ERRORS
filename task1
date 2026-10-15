@@ -1,0 +1,21 @@
+# Student names are keys and their marks are values.
+student_marks = {
+    "Ayesha": 92,
+    "Rahul": 85,
+    "Farhan": 88,
+    "Priya": 95,
+    "Omar": 79
+}
+
+student_name = input("Enter the student's name: ").strip()
+
+# Dictionary lookup is case-insensitive for this example.
+matching_name = next(
+    (name for name in student_marks if name.lower() == student_name.lower()),
+    None
+)
+
+if matching_name is not None:
+    print(f"{matching_name}'s marks: {student_marks[matching_name]}")
+else:
+    print(f"Sorry, student '{student_name}' was not found.")
